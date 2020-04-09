@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration 
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 对mybatis的全局配置 -->
+	<settings>
+		<!-- 开启分页 -->
+		<setting name="safeRowBoundsEnabled" value="true" />
+		<setting name="cacheEnabled" value="true"/>
+	</settings>
+
+	<!-- 某个类型取别名 ,别名可以在映射文件中使用 -->
+	<typeAliases>
+		<!-- 给当前包下所有的类取别名，别名为类名 -->
+		<package name="com.briup.pojo" />
+		<!-- <typeAlias type="com.briup.bean.Student" alias="stu"/> <typeAlias 
+			type="com.briup.bean.Teacher" alias="tea"/> -->
+	</typeAliases>
+
+	<!-- 配置文件 configuration -->
+	<environments default="development">
+		<environment id="development">
+			<!-- MANAGED : 把事务处理托管给web容器，需要web容器支持 tomcat不支持 -->
+			<transactionManager type="JDBC" />
+			<!-- <dataSource type="JNDI"> <property name="data_source" value="java:comp/env/jdbc/DefaultDS"/> 
+				</dataSource> -->
+			<dataSource type="POOLED">
+				<!-- property ：类中 get/set方法 去掉get/set 剩下单词 首字母小写 -->
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE" />
+				<property name="username" value="briup" />
+				<property name="password" value="briup" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+	  <package name="com.briup.mapper"/>
+	</mappers>
+
+</configuration>
+

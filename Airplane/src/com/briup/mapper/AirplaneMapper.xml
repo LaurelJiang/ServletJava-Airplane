@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.mapper.AirplaneMapper">
+   <resultMap type="airplane" id="mymap">
+     <id column="id" property="id"/>
+     <result column="time" property="time"/>
+     <result column="price" property="price"/>
+     <result column="airno" property="airNo"/>
+     <association property="takePort" javaType="airport">
+      <id column="takeid" property="id"/>
+      <result column="takecityname" property="cityName"/>
+      <result column="takeportname" property="portName"/>
+     </association>
+     
+     <association property="landport" javaType="airport">
+      <id column="landid" property="id"/>
+      <result column="landcityname" property="cityName"/>
+      <result column="landportname" property="portName"/>
+     </association>
+   </resultMap>
+   <select id="selByTakeidLandid" resultType="mymap">
+      
+   </select>
+</mapper>
